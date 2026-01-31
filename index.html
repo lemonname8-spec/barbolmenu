@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Барбол — Меню</title>
+  <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+
+<body>
+
+  <!-- =======================
+       ЭКРАН 1: ГЛАВНАЯ (HOME)
+       ======================= -->
+  <section class="page" id="pageHome">
+
+    <header class="top">
+      <div class="container">
+        <div class="brand">
+          <img class="logo" src="assets/img/barbol-logo.jpg.jpg" alt="Барбол">
+          <div class="brandText">
+            <div class="brandTitle">Барбол</div>
+            <div class="brandSub">Каталог • Заказ в WhatsApp</div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="container main">
+      <section class="hero">
+        <div class="heroMedia">
+          <video
+            class="heroVideo"
+            autoplay
+            muted
+            playsinline
+            loop
+            preload="auto"
+            poster="assets/img/cover.jpg"
+          >
+            <source src="assets/img/WhatsApp Video 2026-01-31 at 14.54.56.mp4" type="video/mp4">
+            Ваш браузер не поддерживает видео.
+          </video>
+        </div>
+
+        <div class="heroText">
+          <div class="heroTitle">Барбол — всегда с любовью.</div>
+          <div class="heroDesc">Выберите категорию, чтобы посмотреть ассортимент и цены.</div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="sectionTitle">Выберите категорию</div>
+
+        <div class="cats" id="cats">
+          <button class="catCard" id="btnCakes" type="button">
+            <div class="catName">Торты</div>
+            <div class="catCount" id="count-cakes">10 позиций</div>
+          </button>
+
+          <button class="catCard" id="btnSets" type="button">
+            <div class="catName">Наборы</div>
+            <div class="catCount" id="count-sets">10 позиций</div>
+          </button>
+
+          <button class="catCard" id="btnCustom" type="button">
+            <div class="catName">Заказать торт</div>
+            <div class="catCount">Индивидуально</div>
+          </button>
+        </div>
+      </section>
+    </main>
+  </section>
+
+  <!-- =======================
+       ЭКРАН 2: ТОРТЫ (CAKES)
+       ======================= -->
+  <section class="page hidden" id="pageCakes">
+    <header class="top">
+      <div class="container cakesHeader">
+        <button class="backBtn" id="backBtnCakes" type="button">← Назад</button>
+        <div class="brandText">
+          <div class="brandTitle">Торты</div>
+          <div class="brandSub">Выберите размер S/M/L — цена меняется</div>
+        </div>
+      </div>
+    </header>
+
+    <main class="container main">
+      <section class="section">
+        <div class="grid" id="gridCakes"></div>
+      </section>
+    </main>
+  </section>
+
+  <!-- =======================
+       ЭКРАН 3: НАБОРЫ (SETS)
+       ======================= -->
+  <section class="page hidden" id="pageSets">
+    <header class="top">
+      <div class="container cakesHeader">
+        <button class="backBtn" id="backBtnSets" type="button">← Назад</button>
+        <div class="brandText">
+          <div class="brandTitle">Наборы</div>
+          <div class="brandSub">Готовые наборы — добавляйте в заказ</div>
+        </div>
+      </div>
+    </header>
+
+    <main class="container main">
+      <section class="section">
+        <div class="grid" id="gridSets"></div>
+      </section>
+    </main>
+  </section>
+
+  <!-- =======================
+       НИЖНЯЯ ПАНЕЛЬ (общая)
+       ======================= -->
+  <div class="bottomBar">
+    <div class="container bottomInner">
+      <div class="cartBox">
+        <div class="cartBadge" id="cartCount">0</div>
+        <div class="cartText">
+          <div class="cartLabel">Корзина</div>
+          <div class="cartSum"><span id="cartSum">0</span> сом</div>
+        </div>
+      </div>
+<div class="cartList" id="cartList"></div>
+<div class="deliveryChoice" id="deliveryChoice">
+  <button class="deliveryBtn" id="btnPickup">Самовывоз</button>
+  <button class="deliveryBtn" id="btnDelivery">Доставка</button>
+</div>
+
+<input
+  class="address hidden"
+  id="address"
+  placeholder="Адрес (например: ул. ...)"
+/>
+      <button class="clearBtn" id="clearBtn" type="button">Очистить</button>
+      <a class="orderBtn" id="orderBtn" href="#" rel="noopener">Заказать в WhatsApp</a>
+    </div>
+  </div>
+
+
+<!-- =======================
+     ЭКРАН 4: ЗАКАЗАТЬ ТОРТ (CUSTOM)
+     ======================= -->
+<section class="page hidden" id="pageCustom">
+  <header class="top">
+    <div class="container cakesHeader">
+      <button class="backBtn" id="backBtnCustom" type="button">← Назад</button>
+      <div class="brandText">
+        <div class="brandTitle">Заказать торт</div>
+        <div class="brandSub">Заполните детали — мы ответим в WhatsApp</div>
+      </div>
+    </div>
+  </header>
+
+  <main class="container main">
+    <section class="section customCenter">
+      <div class="customTitle">Хотите заказать свой торт?</div>
+      <div class="customSub">Скажите какой торт вы хотели бы?</div>
+
+      <!-- Слайдер -->
+      <div class="sliderWrap">
+        <button class="sliderArrow" id="prevCake" type="button">‹</button>
+
+        <div class="slider" id="cakeSlider" aria-label="Выбор основы торта">
+          <!-- карточки добавит JS -->
+        </div>
+
+        <button class="sliderArrow" id="nextCake" type="button">›</button>
+      </div>
+      <!-- выбранная основа (чип) -->
+<div class="pickRow" id="pickRow"></div>
+
+      <!-- Поле ввода -->
+      <div class="customFieldTitle">Напишите какой торт вы хотели бы</div>
+      <textarea class="customTextarea" id="customText" rows="4"
+        placeholder="Например: 2 кг, шоколадный бисквит, крем чиз, надпись 'С днём рождения', доставка..."></textarea>
+
+      <!-- Кнопка отправки -->
+      <button class="sendBtn" id="sendCustom" type="button">Отправить</button>
+    </section>
+  </main>
+</section>
+
+
+  <script src="assets/js/app.js"></script>
+</body>
+</html>
