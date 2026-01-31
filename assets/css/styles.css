@@ -576,3 +576,92 @@ body{
 
 
 .hidden{ display:none !important; }
+/* ===== MOBILE FIX: bottom bar layout (NO SQUEEZE) ===== */
+@media (max-width: 720px){
+
+  /* нижняя панель — строго по ширине экрана */
+  .bottomBar{
+    left:0 !important;
+    right:0 !important;
+    width:100% !important;
+    padding-bottom: calc(10px + env(safe-area-inset-bottom)) !important;
+  }
+
+  /* вместо flex — grid, чтобы ничего не сжималось */
+  .bottomInner{
+    display:grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    grid-template-areas:
+      "cart cart"
+      "list list"
+      "choice choice"
+      "address address"
+      "clear order" !important;
+    gap:10px !important;
+    align-items:stretch !important;
+  }
+
+  /* блок корзины */
+  .cartBox{ grid-area: cart !important; }
+
+  /* список выбранного */
+  .cartList{
+    grid-area: list !important;
+    width:100% !important;
+    max-height: 140px !important;
+    overflow:auto !important;
+  }
+
+  /* выбор доставки / самовывоз */
+  #deliveryChoice{
+    grid-area: choice !important;
+    display:flex !important;
+    flex-direction:column !important;
+    gap:8px !important;
+    width:100% !important;
+  }
+
+  /* сами кнопки выбора — на всю ширину, не ломаются */
+  #deliveryChoice .deliveryBtn{
+    width:100% !important;
+    height:44px !important;
+    border-radius:14px !important;
+    white-space:nowrap !important;
+  }
+
+  /* поле адреса — тоже на всю ширину */
+  #address{
+    grid-area: address !important;
+    width:100% !important;
+    min-width:0 !important;
+  }
+
+  /* кнопки */
+  #clearBtn{
+    grid-area: clear !important;
+    width:100% !important;
+    min-width:0 !important;
+  }
+  #orderBtn{
+    grid-area: order !important;
+    width:100% !important;
+    min-width:0 !important;
+    white-space:nowrap !important;
+  }
+}
+
+/* чтобы страница не пряталась под fixed панелью */
+@media (max-width: 720px){
+  body{ padding-bottom: 290px !important; }
+}
+@media (max-width: 560px){
+  #gridCakes, #gridSets{
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+}
+@media (max-width: 340px){
+  #gridCakes, #gridSets{
+    grid-template-columns: 1fr !important;
+  }
+}
+
